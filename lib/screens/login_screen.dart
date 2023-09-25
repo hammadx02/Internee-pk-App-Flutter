@@ -61,14 +61,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 //     ),
                 //   ],
                 // ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    MyButton(
-                      title: 'Sign In',
-                      onTap: () {},
-                    ),
-                  ],
+                MyButton(
+                  title: 'Sign In',
+                  onTap: () {},
                 ),
               ],
             ),
