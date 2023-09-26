@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:internee_pk/screens/home_screen.dart';
 import 'package:internee_pk/screens/login_screen.dart';
 
 void main() {
@@ -15,10 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Internee.pk App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primaryColor: Colors.green,
       ),
-      home: InterneeApp(),
+      home: const LoginScreen(),
     );
   }
 }
