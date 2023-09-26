@@ -19,6 +19,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               'images/logo.png',
@@ -29,6 +30,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             const Text(
               'Enter your email:',
               style: TextStyle(
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),

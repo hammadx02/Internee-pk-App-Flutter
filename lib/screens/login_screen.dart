@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Remember Me',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.grey[800],
+                      color: Colors.grey[600],
                       fontWeight: FontWeight.w700,
                     ),
                   ),
