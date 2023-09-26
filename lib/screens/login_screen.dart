@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internee_pk/screens/forgot_password_screen.dart';
 import 'package:internee_pk/widgets/text_form_field.dart';
 
 import '../widgets/buttons.dart';
@@ -74,7 +75,14 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => const ForgotPasswordScreen()),
+                  ),
+                );
+              },
               child: const Text(
                 'Forgot Password?',
                 style: TextStyle(
