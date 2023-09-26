@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Internee.pk App',
       theme: ThemeData(
-        primaryColor: Colors.green,
+        primarySwatch: Colors.green,
       ),
       home: const LoginScreen(),
     );

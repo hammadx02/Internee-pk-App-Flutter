@@ -48,13 +48,17 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
+                const Icon(
+                  Icons.check_box_outline_blank_rounded,
+                  color: Colors.grey,
+                ),
+                Expanded(
                   child: Text(
                     'Remember Me',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
@@ -67,12 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             const SizedBox(
-              height: 25,
+              height: 30,
             ),
             TextButton(
               onPressed: () {},
               child: const Text(
                 'Forgot Password?',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
