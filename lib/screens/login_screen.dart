@@ -45,9 +45,16 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 15,
             ),
-            MyButton(
-              title: 'Sign In',
-              onTap: () {},
+            Expanded(
+              child: Row(
+                children: [
+                  const Text('Remember Me'),
+                  MyButton(
+                    title: 'Sign In',
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 25,
