@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internee_pk/screens/forgot_password_screen.dart';
+import 'package:internee_pk/screens/home_screen.dart';
 import 'package:internee_pk/widgets/text_form_field.dart';
 
 import '../widgets/buttons.dart';
@@ -66,7 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 Expanded(
                   child: MyButton(
                     title: 'Sign In',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => const HomeScreen()),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

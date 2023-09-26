@@ -31,6 +31,64 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 15.0,
+                bottom: 10,
+              ),
+              child: Text(
+                'Home',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            const Divider(
+              color: Colors.green,
+              thickness: 0.7,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+              ),
+              child: Container(
+                width: double.infinity,
+                height: 56,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    side: BorderSide(
+                      color: Colors.grey.shade500,
+                    ),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 18.0,
+                    horizontal: 10,
+                  ),
+                  child: Text(
+                    'Welcome from Internee.pk, Hammad Ali Shah!',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+            ),
+            const Divider(
+              thickness: 0.7,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
