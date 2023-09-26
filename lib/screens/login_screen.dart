@@ -45,16 +45,26 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 15,
             ),
-            Expanded(
-              child: Row(
-                children: [
-                  const Text('Remember Me'),
-                  MyButton(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Expanded(
+                  child: Text(
+                    'Remember Me',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: MyButton(
                     title: 'Sign In',
                     onTap: () {},
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 25,

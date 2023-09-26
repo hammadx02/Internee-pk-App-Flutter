@@ -22,10 +22,6 @@ class MyButton extends StatelessWidget {
         decoration: ShapeDecoration(
           color: Colors.green,
           shape: RoundedRectangleBorder(
-            side: const BorderSide(
-              width: 0.5,
-              color: Colors.green,
-            ),
             borderRadius: BorderRadius.circular(8),
           ),
         ),
@@ -33,7 +29,8 @@ class MyButton extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
               color: Colors.white,
             ),
           ),
