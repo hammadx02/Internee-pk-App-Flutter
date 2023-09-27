@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final _formkey = GlobalKey<FormState>();
+  // final _formkey = GlobalKey<FormState>();
   bool isPass = false;
   bool onTap = false;
 
