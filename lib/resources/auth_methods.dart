@@ -1,24 +1,39 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'dart:js';
 
-FirebaseAuth _auth = FirebaseAuth.instance;
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:internee_pk/screens/home_screen.dart';
+// import 'package:internee_pk/utils/utils.dart';
 
-Future<String> loginUser({
-  required String email,
-  required String password,
-}) async {
-  String res = 'Some error occured';
-  try {
-    if (email.isNotEmpty || password.isNotEmpty) {
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      res = 'success';
-    } else {
-      res = 'please enter all the fields';
-    }
-  } catch (err) {
-    return err.toString();
-  }
-  return res;
-}
+// class AuthMethods {
+//   final _auth = FirebaseAuth.instance;
+
+//   Future<String> loginUser({
+//     required String email,
+//     required String password,
+//   }) async {
+//     String res = 'Some error occured';
+
+//     if (email.isNotEmpty || password.isNotEmpty) {
+//       await _auth
+//           .signInWithEmailAndPassword(
+//             email: email,
+//             password: password,
+//           )
+//           .then(
+//             (value) => Navigator.push(
+//               context as BuildContext,
+//               MaterialPageRoute(
+//                 builder: (context) => const HomeScreen(),
+//               ),
+//             ),
+//           )
+//           .onError((error, stackTrace) {
+//         showSnackBar(context as BuildContext, error.toString());
+//       });
+//     res = 'success';
+//     } else {
+//       return  'please enter all the fields';
+//     }
+//   }
+// }

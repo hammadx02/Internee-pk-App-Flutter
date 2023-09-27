@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:internee_pk/resources/auth_methods.dart';
 import 'package:internee_pk/screens/forgot_password_screen.dart';
 import 'package:internee_pk/screens/home_screen.dart';
+import 'package:internee_pk/utils/utils.dart';
 import 'package:internee_pk/widgets/text_form_field.dart';
-
 import '../widgets/buttons.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +15,48 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
+  void login() {
+    _auth
+        .signInWithEmailAndPassword(
+            email: _emailController.text.toString(),
+            password: _passwordController.text.toString())
+        .then(
+      (value) {
+        Utils().toastMessage(value.user!.email.toString());
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      },
+    ).onError((error, stackTrace) {
+      debugPrint(error.toString());
+      Utils().toastMessage(
+        error.toString(),
+      );
+    });
+  }
+
+  // void loginUser() async {
+  //   AuthMethods auth = AuthMethods();
+  //   String res = await auth.loginUser(
+  //     email: _emailController.text.toString(),
+  //     password: _passwordController.text.toString(),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 55,
             ),
             MyTextFiled(
+              controller: _emailController,
               hintText: 'Email',
               icon: const Icon(
                 Icons.email_rounded,
@@ -39,6 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 15,
             ),
             MyTextFiled(
+              controller: _passwordController,
               hintText: 'Password',
               icon: const Icon(
                 Icons.visibility_rounded,
@@ -68,12 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: MyButton(
                     title: 'Sign In',
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => const HomeScreen()),
-                        ),
-                      );
+                      login();
                     },
                   ),
                 ),

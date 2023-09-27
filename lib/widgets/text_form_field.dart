@@ -1,20 +1,24 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class MyTextFiled extends StatelessWidget {
   final String hintText;
   final Icon icon;
+   TextEditingController controller;
   // ignore: use_key_in_widget_constructors
   MyTextFiled({
     Key? key,
+    required this.controller,
     required this.hintText,
     required this.icon,
   });
-  final TextEditingController passwordController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: passwordController,
+      controller: controller,
       decoration: InputDecoration(
         suffixIcon: icon,
         hintText: hintText,
