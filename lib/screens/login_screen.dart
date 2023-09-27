@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+  bool isPass = false;
 
   @override
   void dispose() {
@@ -75,20 +76,30 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 55,
             ),
             MyTextFiled(
+              isPass: false,
               controller: _emailController,
               hintText: 'Email',
               icon: const Icon(
                 Icons.email_rounded,
               ),
+              onPressed: () {},
             ),
             const SizedBox(
               height: 15,
             ),
             MyTextFiled(
+              isPass: isPass,
               controller: _passwordController,
               hintText: 'Password',
-              icon: const Icon(
-                Icons.visibility_rounded,
+              onPressed: () {
+                setState(() {
+                  isPass = !isPass;
+                });
+              },
+              icon: Icon(
+                isPass
+                    ? Icons.visibility_off_rounded
+                    : Icons.visibility_rounded,
               ),
             ),
             const SizedBox(
@@ -116,9 +127,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     loading: loading,
                     title: 'Sign In',
                     onTap: () {
-                      if (_formkey.currentState!.validate()) {
-                        loginUser();
-                      }
+                      // if (_formkey.currentState != null ||
+                      //     _formkey.currentState!.validate()) {
+                      //   loginUser();
+                      // }
+                      loginUser();
                     },
                   ),
                 ),

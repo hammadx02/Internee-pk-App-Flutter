@@ -2,28 +2,43 @@
 
 import 'package:flutter/material.dart';
 
-class MyTextFiled extends StatelessWidget {
-  final _formkey = GlobalKey<FormState>();
+class MyTextFiled extends StatefulWidget {
   final String hintText;
   final Icon icon;
+  bool isPass;
   TextEditingController controller;
+  final VoidCallback onPressed;
+
   // ignore: use_key_in_widget_constructors
   MyTextFiled({
     Key? key,
     required this.controller,
     required this.hintText,
     required this.icon,
+    this.isPass = false,
+    required this.onPressed,
   });
+
+  @override
+  State<MyTextFiled> createState() => _MyTextFiledState();
+}
+
+class _MyTextFiledState extends State<MyTextFiled> {
+  final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formkey,
       child: TextFormField(
-        controller: controller,
+        controller: widget.controller,
+        obscureText: widget.isPass,
         decoration: InputDecoration(
-          suffixIcon: icon,
-          hintText: hintText,
+          suffixIcon: IconButton(
+            icon: widget.icon,
+            onPressed: widget.onPressed,
+          ),
+          hintText: widget.hintText,
           hintStyle: const TextStyle(
             color: Colors.grey,
           ),
@@ -37,10 +52,10 @@ class MyTextFiled extends StatelessWidget {
           ),
         ),
         validator: (value) {
-          if (value!.isEmpty) {
-            return null;
-          } else {
+          if (value == null || value.isEmpty) {
             return 'Enter Password';
+          } else {
+            return null;
           }
         },
       ),
