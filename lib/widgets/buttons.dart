@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
+class MyButton extends StatelessWidget { 
   final String title;
   final VoidCallback onTap;
   final bool loading;
 
-  const MyButton({
+   const MyButton({
     super.key,
     required this.title,
     required this.onTap,

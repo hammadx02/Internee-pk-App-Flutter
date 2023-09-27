@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -115,7 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     loading: loading,
                     title: 'Sign In',
                     onTap: () {
-                      loginUser();
+                      if (_formkey.currentState!.validate()) {
+                        loginUser();
+                      }
                     },
                   ),
                 ),
