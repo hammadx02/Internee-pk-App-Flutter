@@ -25,6 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
   }
+  //  email: _emailController.text.toString(),
+  //           password: _passwordController.text.toString()
 
   void login() {
     _auth
