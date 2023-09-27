@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:internee_pk/resources/auth_methods.dart';
 import 'package:internee_pk/screens/forgot_password_screen.dart';
 import 'package:internee_pk/screens/home_screen.dart';
 import 'package:internee_pk/utils/utils.dart';
@@ -15,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool loading = false;
   final _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -25,17 +25,20 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
   }
-  //  email: _emailController.text.toString(),
-  //           password: _passwordController.text.toString()
 
-  void login() {
+  void loginUser() {
+    setState(() {
+      loading = true;
+    });
     _auth
         .signInWithEmailAndPassword(
             email: _emailController.text.toString(),
             password: _passwordController.text.toString())
         .then(
       (value) {
-        // Utils().toastMessage(value.user!.email.toString());
+        setState(() {
+          loading = false;
+        });
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -44,13 +47,15 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
     ).onError((error, stackTrace) {
+      setState(() {
+        loading = false;
+      });
       debugPrint(error.toString());
       Utils().toastMessage(
         error.toString(),
       );
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +112,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Expanded(
                   child: MyButton(
+                    loading: loading,
                     title: 'Sign In',
                     onTap: () {
-                      login();
+                      loginUser();
                     },
                   ),
                 ),

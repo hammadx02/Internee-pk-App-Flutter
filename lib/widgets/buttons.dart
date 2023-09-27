@@ -3,13 +3,15 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  String title;
+  final String title;
   final VoidCallback onTap;
+  final bool loading;
 
-  MyButton({
+  const MyButton({
     super.key,
     required this.title,
     required this.onTap,
+    this.loading = false,
   });
 
   @override
@@ -26,14 +28,20 @@ class MyButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
+          child: loading
+              // ignore: dead_code
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 3,
+                )
+              : Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
         ),
       ),
     );
