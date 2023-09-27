@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class MyTextFiled extends StatelessWidget {
   final String hintText;
   final Icon icon;
+  // ignore: use_key_in_widget_constructors
   MyTextFiled({
-    super.key,
+    Key? key,
     required this.hintText,
     required this.icon,
   });
