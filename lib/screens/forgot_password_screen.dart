@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:internee_pk/utils/utils.dart';
 
 import '../widgets/buttons.dart';
 
@@ -10,6 +12,9 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final emailController = TextEditingController();
+  final auth = FirebaseAuth.instance;
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +43,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               height: 10,
             ),
             TextFormField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 fillColor: const Color(0xffF7F8F9),
                 filled: false,
@@ -54,7 +61,34 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
             MyButton(
               title: 'Send OTP',
-              onTap: () {},
+              loading: loading,
+              onTap: () {
+                setState(() {
+                  loading = true;
+                });
+                auth
+                    .sendPasswordResetEmail(
+                        email: emailController.text.toString())
+                    .then(
+                  (value) {
+                    setState(() {
+                      loading = false;
+                    });
+                    Utils().toastMessage(
+                      'We have sent you email to recover password, please check your email',
+                    );
+                  },
+                ).onError(
+                  (error, stackTrace) {
+                    setState(() {
+                      loading = false;
+                    });
+                    Utils().toastMessage(
+                      error.toString(),
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),

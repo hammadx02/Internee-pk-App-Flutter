@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   bool isPass = false;
+  bool onTap = false;
 
   @override
   void dispose() {
@@ -106,11 +107,23 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 15,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Icon(
-                  Icons.check_box_outline_blank_rounded,
-                  color: Colors.grey,
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      onTap = !onTap;
+                    });
+                  },
+                  icon: onTap
+                      ? const Icon(
+                          Icons.check_box_rounded,
+                          color: Colors.green,
+                        )
+                      : const Icon(
+                          Icons.check_box_outline_blank_rounded,
+                          color: Colors.grey,
+                        ),
                 ),
                 Expanded(
                   child: Text(
