@@ -49,13 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  // void loginUser() async {
-  //   AuthMethods auth = AuthMethods();
-  //   String res = await auth.loginUser(
-  //     email: _emailController.text.toString(),
-  //     password: _passwordController.text.toString(),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
