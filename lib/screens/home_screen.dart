@@ -62,14 +62,20 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 width: double.infinity,
                 height: 56,
-                decoration: ShapeDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(
-                      color: Colors.grey.shade500,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      blurRadius: 4,
+                      offset: const Offset(
+                        0,
+                        2,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(
