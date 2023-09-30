@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-showSnackBar(BuildContext context, String text, String string) {
-  return ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(text),
-    ),
-  );
-}
+
 
 
 
